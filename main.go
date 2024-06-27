@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/bedrock-gophers/roles/role"
+	"github.com/bedrock-gophers/role/role"
 	"github.com/df-mc/dragonfly/server"
 	"github.com/df-mc/dragonfly/server/event"
 	"github.com/df-mc/dragonfly/server/player"
