@@ -17,14 +17,10 @@ func (jsonMarshaler) Unmarshal(data []byte, v interface{}) error {
 
 // MarshalJSON ...
 func (r *Roles) MarshalJSON() ([]byte, error) {
-	r.roleMu.Lock()
-	defer r.roleMu.Unlock()
 	return marshalRoles(r, jsonMarshaler{})
 }
 
 // UnmarshalJSON ...
 func (r *Roles) UnmarshalJSON(b []byte) error {
-	r.roleMu.Lock()
-	defer r.roleMu.Unlock()
 	return unmarshalRoles(r, b, jsonMarshaler{})
 }

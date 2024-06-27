@@ -19,14 +19,10 @@ func (bsonMarshaler) Unmarshal(data []byte, v interface{}) error {
 
 // MarshalBSON ...
 func (r *Roles) MarshalBSON() ([]byte, error) {
-	r.roleMu.Lock()
-	defer r.roleMu.Unlock()
 	return marshalRoles(r, bsonMarshaler{})
 }
 
 // UnmarshalBSON ...
 func (r *Roles) UnmarshalBSON(b []byte) error {
-	r.roleMu.Lock()
-	defer r.roleMu.Unlock()
 	return unmarshalRoles(r, b, bsonMarshaler{})
 }
