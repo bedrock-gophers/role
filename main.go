@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
+	"github.com/bedrock-gophers/roles/roles"
 	"github.com/df-mc/dragonfly/server"
 	"github.com/df-mc/dragonfly/server/event"
 	"github.com/df-mc/dragonfly/server/player"
 	"github.com/df-mc/dragonfly/server/player/chat"
-	"github.com/restartfu/roles/roles"
 	"github.com/sandertv/gophertunnel/minecraft/text"
 	"github.com/sirupsen/logrus"
 )
