@@ -1,0 +1,30 @@
+package roles
+
+import "github.com/go-jose/go-jose/v3/json"
+
+// jsonMarshaler is a Marshaler that uses the encoding/json package to marshal and unmarshal data.
+type jsonMarshaler struct{}
+
+// Marshal ...
+func (jsonMarshaler) Marshal(v interface{}) ([]byte, error) {
+	return json.Marshal(v)
+}
+
+// Unmarshal ...
+func (jsonMarshaler) Unmarshal(data []byte, v interface{}) error {
+	return json.Unmarshal(data, v)
+}
+
+// MarshalJSON ...
+func (r *Roles) MarshalJSON() ([]byte, error) {
+	r.roleMu.Lock()
+	defer r.roleMu.Unlock()
+	return marshalRoles(r, jsonMarshaler{})
+}
+
+// UnmarshalJSON ...
+func (r *Roles) UnmarshalJSON(b []byte) error {
+	r.roleMu.Lock()
+	defer r.roleMu.Unlock()
+	return unmarshalRoles(r, b, jsonMarshaler{})
+}
