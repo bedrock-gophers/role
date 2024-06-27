@@ -1,4 +1,4 @@
-package roles
+package role
 
 import "github.com/go-jose/go-jose/v3/json"
 

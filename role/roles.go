@@ -1,4 +1,4 @@
-package roles
+package role
 
 import (
 	"github.com/sandertv/gophertunnel/minecraft/text"
@@ -47,7 +47,7 @@ func (r Role) Coloured(s string) string {
 	return text.Colourf("<%s>%s</%s>", r.colour, s, r.colour)
 }
 
-// Roles manages a list of roles for a user. Roles can be added, removed, and checked for. Roles can also have an
+// Roles manages a list of role for a user. Roles can be added, removed, and checked for. Roles can also have an
 // expiration time, after which they are removed from the user's role list.
 type Roles struct {
 	roleMu          sync.Mutex
@@ -91,7 +91,7 @@ func (r *Roles) Remove(ro Role) bool {
 	return true
 }
 
-// Contains returns true if the manager has any of the given roles. Users are responsible for updating the highest role
+// Contains returns true if the manager has any of the given role. Users are responsible for updating the highest role
 // usages if changed.
 func (r *Roles) Contains(roles ...Role) bool {
 	r.checkExpiry()
@@ -138,7 +138,7 @@ func (r *Roles) Highest() Role {
 	return r.roles[len(r.roles)-1]
 }
 
-// All returns the user's roles.
+// All returns the user's role.
 func (r *Roles) All() []Role {
 	r.checkExpiry()
 	r.roleMu.Lock()

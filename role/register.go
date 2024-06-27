@@ -1,4 +1,4 @@
-package roles
+package role
 
 import (
 	"errors"
@@ -29,12 +29,12 @@ func register(rls ...Role) {
 	roleMu.Unlock()
 }
 
-// Load loads all roles from a folder.
+// Load loads all role from a folder.
 func Load(folder string) error {
 	folder = strings.TrimSuffix(folder, "/")
 	files, err := os.ReadDir(folder)
 	if err != nil {
-		return errors.New(fmt.Sprintf("error loading roles: %v", err))
+		return errors.New(fmt.Sprintf("error loading role: %v", err))
 	}
 
 	var newRoles []Role
@@ -101,7 +101,7 @@ func sortRoles(rls []Role) {
 	roleMu.Unlock()
 }
 
-// All returns all roles that are currently registered.
+// All returns all role that are currently registered.
 func All() []Role {
 	roleMu.Lock()
 	r := make([]Role, len(roles))

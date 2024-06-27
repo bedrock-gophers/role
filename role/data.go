@@ -1,4 +1,4 @@
-package roles
+package role
 
 import (
 	"github.com/restartfu/gophig"

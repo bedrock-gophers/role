@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/bedrock-gophers/roles/roles"
+	"github.com/bedrock-gophers/roles/role"
 	"github.com/df-mc/dragonfly/server"
 	"github.com/df-mc/dragonfly/server/event"
 	"github.com/df-mc/dragonfly/server/player"
@@ -12,11 +12,11 @@ import (
 )
 
 func main() {
-	err := roles.Load("assets/roles/")
+	err := role.Load("assets/role/")
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(roles.All())
+	fmt.Println(role.All())
 	log := logrus.New()
 	log.Formatter = &logrus.TextFormatter{ForceColors: true}
 	log.Level = logrus.InfoLevel
@@ -48,7 +48,7 @@ type handler struct {
 func (h *handler) HandleChat(ctx *event.Context, message *string) {
 	ctx.Cancel()
 
-	owner, ok := roles.ByName("owner")
+	owner, ok := role.ByName("owner")
 	if !ok {
 		panic("role not found")
 	}

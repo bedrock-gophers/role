@@ -1,4 +1,4 @@
-module github.com/bedrock-gophers/roles
+module github.com/bedrock-gophers/role
 
 go 1.22.2
 
