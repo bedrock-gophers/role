@@ -56,6 +56,28 @@ func Load(folder string) error {
 
 	sortRoles(newRoles)
 	register(newRoles...)
+
+	for _, r := range newRoles {
+		if r.inherits == "" {
+			continue
+		}
+		if r.inherits == r.Name() {
+			return errors.New(fmt.Sprintf("role %s and role %s have circular inheritance", r.Name(), r.Name()))
+		}
+		_, ok := rolesName[strings.ToLower(r.inherits)]
+		if !ok {
+			return errors.New(fmt.Sprintf("role %s inherits from the role %s which does not exist", r.Name(), r.inherits))
+		}
+
+		// check for circular inheritance
+		for _, r2 := range newRoles {
+			if r2.Name() == r.inherits {
+				if r2.inherits == r.Name() {
+					return errors.New(fmt.Sprintf("role %s and role %s have circular inheritance", r.Name(), r2.Name()))
+				}
+			}
+		}
+	}
 	return nil
 }
 
