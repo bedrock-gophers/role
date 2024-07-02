@@ -117,3 +117,12 @@ func ByName(name string) (Role, bool) {
 	roleMu.Unlock()
 	return r, ok
 }
+
+// ByNameMust returns a role by its name. If the role does not exist, it panics.
+func ByNameMust(name string) Role {
+	r, ok := ByName(name)
+	if !ok {
+		panic(fmt.Sprintf("role %s does not exist", name))
+	}
+	return r
+}
