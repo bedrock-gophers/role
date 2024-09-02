@@ -8,12 +8,12 @@ import (
 )
 
 type singularRoleData struct {
-	name string
+	Name string
 }
 
 func marshalSingularRole(r Role, marshaler gophig.Marshaler) ([]byte, error) {
 	var d singularRoleData
-	d.name = r.name
+	d.Name = r.name
 
 	return marshaler.Marshal(d)
 }
@@ -25,7 +25,7 @@ func unmarshalSingularRole(r *Role, b []byte, marshaler gophig.Marshaler) error 
 		return err
 	}
 
-	*r, _ = ByName(d.name)
+	*r, _ = ByName(d.Name)
 	return nil
 }
 
