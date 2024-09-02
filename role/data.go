@@ -11,7 +11,7 @@ type singularRoleData struct {
 	Name string
 }
 
-func marshalSingularRole(r Role, marshaler gophig.Marshaler) ([]byte, error) {
+func marshalSingularRole(r *Role, marshaler gophig.Marshaler) ([]byte, error) {
 	var d singularRoleData
 	d.Name = r.name
 
