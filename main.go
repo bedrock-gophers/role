@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/bedrock-gophers/role/role"
 	"github.com/df-mc/dragonfly/server"
 	"github.com/df-mc/dragonfly/server/event"
@@ -12,7 +13,7 @@ import (
 )
 
 func main() {
-	err := role.Load("assets/role/")
+	err := role.Load("assets/roles/")
 	if err != nil {
 		panic(err)
 	}

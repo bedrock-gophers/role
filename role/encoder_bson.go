@@ -26,3 +26,13 @@ func (r *Roles) MarshalBSON() ([]byte, error) {
 func (r *Roles) UnmarshalBSON(b []byte) error {
 	return unmarshalRoles(r, b, bsonMarshaler{})
 }
+
+// MarshalBSON ...
+func (r Role) MarshalBSON() ([]byte, error) {
+	return marshalSingularRole(r, bsonMarshaler{})
+}
+
+// UnmarshalBSON ...
+func (r Role) UnmarshalBSON(b []byte) error {
+	return unmarshalSingularRole(&r, b, bsonMarshaler{})
+}

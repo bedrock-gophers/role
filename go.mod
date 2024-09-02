@@ -5,6 +5,7 @@ go 1.22.2
 require (
 	github.com/df-mc/dragonfly v0.9.16
 	github.com/go-jose/go-jose/v3 v3.0.3
+	github.com/pelletier/go-toml v1.9.5
 	github.com/rcrowley/go-bson v0.0.0-20140210180454-771ad044f2d7
 	github.com/restartfu/gophig v0.0.0-20230501130741-bd994da592f7
 	github.com/sandertv/gophertunnel v1.38.0

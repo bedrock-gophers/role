@@ -1,10 +1,38 @@
 package role
 
 import (
-	"github.com/restartfu/gophig"
+	"errors"
 	"strings"
 	"time"
+
+	"github.com/restartfu/gophig"
 )
+
+type singularRoleData struct {
+	name string
+}
+
+func marshalSingularRole(r Role, marshaler gophig.Marshaler) ([]byte, error) {
+	var d singularRoleData
+	d.name = r.name
+
+	return marshaler.Marshal(d)
+}
+
+func unmarshalSingularRole(r *Role, b []byte, marshaler gophig.Marshaler) error {
+	var d singularRoleData
+
+	if err := marshaler.Unmarshal(b, &d); err != nil {
+		return err
+	}
+
+	var ok bool
+	*r, ok = ByName(d.name)
+	if !ok {
+		return errors.New("error unmarshaling singular role: role with name " + d.name + " not found")
+	}
+	return nil
+}
 
 // rolesData is a struct that is used to encode roles to BSON or any other format that requires encoding.
 type rolesData struct {

@@ -1,11 +1,12 @@
 package role
 
 import (
-	"github.com/sandertv/gophertunnel/minecraft/text"
 	"slices"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/sandertv/gophertunnel/minecraft/text"
 )
 
 // Role represents a role in the game.

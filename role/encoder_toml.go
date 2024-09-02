@@ -24,3 +24,13 @@ func (r *Roles) MarshalTOML() ([]byte, error) {
 func (r *Roles) UnmarshalTOML(b []byte) error {
 	return unmarshalRoles(r, b, tomlMarshaler{})
 }
+
+// MarshalBSON ...
+func (r Role) MarshalTOML() ([]byte, error) {
+	return marshalSingularRole(r, tomlMarshaler{})
+}
+
+// UnmarshalBSON ...
+func (r Role) UnmarshalTOML(b []byte) error {
+	return unmarshalSingularRole(&r, b, tomlMarshaler{})
+}
