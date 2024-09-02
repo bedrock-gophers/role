@@ -7,25 +7,21 @@ import (
 	"github.com/restartfu/gophig"
 )
 
-type singularRoleData struct {
-	name string
-}
-
 func marshalSingularRole(r Role, marshaler gophig.Marshaler) ([]byte, error) {
-	var d singularRoleData
-	d.name = r.name
+	var d string
+	d = r.name
 
 	return marshaler.Marshal(d)
 }
 
 func unmarshalSingularRole(r *Role, b []byte, marshaler gophig.Marshaler) error {
-	var d singularRoleData
+	var d string
 
 	if err := marshaler.Unmarshal(b, &d); err != nil {
 		return err
 	}
 
-	*r, _ = ByName(d.name)
+	*r, _ = ByName(d)
 	return nil
 }
 
