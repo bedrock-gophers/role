@@ -1,7 +1,6 @@
 package role
 
 import (
-	"errors"
 	"strings"
 	"time"
 
@@ -26,11 +25,7 @@ func unmarshalSingularRole(r *Role, b []byte, marshaler gophig.Marshaler) error 
 		return err
 	}
 
-	var ok bool
-	*r, ok = ByName(d.name)
-	if !ok {
-		return errors.New("error unmarshaling singular role: role with name " + d.name + " not found")
-	}
+	*r = ByNameMust(d.name)
 	return nil
 }
 
