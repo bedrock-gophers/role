@@ -25,7 +25,7 @@ func unmarshalSingularRole(r *Role, b []byte, marshaler gophig.Marshaler) error 
 		return err
 	}
 
-	*r = ByNameMust(d.name)
+	*r, _ = ByName(d.name)
 	return nil
 }
 
